@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="uk" class="is-preloading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- концепт редизайну для презентації клієнту: не індексувати -->
+<meta name="robots" content="noindex, nofollow">
+<title>ЖК «Одеські Традиції» на Старосінній — квартири з ремонтом</title>
+<meta name="description" content="Житловий комплекс комфорт-класу «Одеські Традиції» в історичному центрі Одеси. Квартири з готовим ремонтом.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="img/hero.jpg" as="image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Прелоадер: ліхтар із логотипу «запалюється», лічильник 0→100, шторка відкриває хіро ===== -->
+<div class="preloader" data-preloader aria-hidden="true">
+  <div class="preloader__center">
+    <svg class="preloader__lantern" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round">
+      <path class="preloader__glow" d="M8 7.5h8l-1.25 8.5h-5.5z" stroke="none"/>
+      <path pathLength="1" d="M12 1.5v2.5"/>
+      <path pathLength="1" d="M6.5 7.5 12 4l5.5 3.5z"/>
+      <path pathLength="1" d="M8 7.5h8l-1.25 8.5h-5.5z"/>
+      <path pathLength="1" d="M12 7.5V16"/>
+      <path pathLength="1" d="M9.5 16h5v2h-5z"/>
+      <path pathLength="1" d="M12 18v4"/>
+      <path pathLength="1" d="M8.5 22h7"/>
+    </svg>
+    <p class="preloader__brand"><span>Одеські</span> <span>Традиції</span></p>
+    <p class="preloader__place">Старосінна · Одеса</p>
+  </div>
+  <div class="preloader__line"><span data-pre-bar></span></div>
+  <span class="preloader__count"><span data-pre-count>0</span></span>
+</div>
+
+<section class="hero" data-hero>
+  <div class="hero__media" aria-hidden="true">
+    <img class="hero__img" src="img/hero.jpg" alt="" data-parallax>
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+
+  <!-- Сітка-напрямні, як у референсі -->
+  <div class="hero__grid" aria-hidden="true">
+    <span class="v v--1"></span><span class="v v--2"></span>
+    <span class="h h--top"></span><span class="h h--bottom"></span>
+  </div>
+
+  <!-- Шапка -->
+  <header class="nav" data-nav>
+    <a class="nav__logo" href="https://starosinna.odesskie-tradicii.com/" aria-label="Одеські Традиції — на головну">
+      <img src="img/logo.svg" alt="Одеські Традиції" width="96" height="56">
+    </a>
+
+    <nav class="nav__links" aria-label="Головне меню">
+      <a href="#about">Про проєкт</a>
+      <a href="#flats">Квартири</a>
+      <a href="#infra">Інфраструктура</a>
+      <a href="#plan">Генплан</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a class="nav__phone" href="tel:+380949483509" aria-label="Подзвонити: +38 094 948-35-09">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.6 3.5 6 3.2c-.9-.1-1.8.5-2 1.4-.6 2.9.2 6.4 3.3 9.6 3.2 3.2 6.8 4 9.6 3.3.9-.2 1.5-1.1 1.4-2l-.3-2.6c-.1-.6-.5-1-1.1-1.2l-2.6-.7c-.5-.1-1.1 0-1.4.4l-1.1 1.2c-1.9-.9-3.5-2.5-4.4-4.4l1.2-1.1c.4-.4.5-.9.4-1.4l-.7-2.6c-.1-.6-.6-1-1.2-1.1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span class="nav__phone-text">+38 094 948-35-09</span>
+      </a>
+      <button class="nav__burger" type="button" aria-label="Відкрити меню" aria-expanded="false" data-burger>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Мобільне меню -->
+  <div class="drawer" data-drawer hidden>
+    <a href="#about">Про проєкт</a>
+    <a href="#flats">Квартири</a>
+    <a href="#infra">Інфраструктура</a>
+    <a href="#plan">Генплан</a>
+    <a href="#contacts">Контакти</a>
+    <a class="drawer__phone" href="tel:+380949483509">+38 094 948-35-09</a>
+  </div>
+
+  <!-- Центр -->
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-reveal>ЖК «Одеські Традиції» · Старосінна</p>
+    <h1 class="hero__title">
+      <span class="line"><span data-line>Квартири з ремонтом</span></span>
+      <span class="line line--soft"><span data-line>у центрі Одеси</span></span>
+    </h1>
+    <p class="hero__sub" data-reveal>1–3-кімнатні квартири від 32 м² — заїжджайте одразу. <br>Привоз, вокзал і море — поруч.</p>
+    <a class="cta" href="#flats" data-reveal>
+      <span>Обрати квартиру</span>
+      <span class="cta__icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <!-- Нижня смуга -->
+  <div class="hero__bar">
+    <div class="fact" data-reveal>
+      <span class="fact__icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </span>
+      <p><strong>Ремонт «під ключ»</strong><span>Заїжджай і живи</span></p>
+    </div>
+
+    <a class="scroll" href="#about" aria-label="Гортати донизу" data-reveal>
+      <span class="scroll__mouse"><i></i></span>
+    </a>
+
+    <div class="fact fact--right" data-reveal>
+      <p><strong>Здача 09.2030</strong><span>14 поверхів · 3 секції</span></p>
+      <span class="fact__icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Про нас: дві прокрутки у протилежні боки ===== -->
+<section class="about" id="about" data-about style="--slides: 3">
+  <div class="about__stage">
+
+    <!-- Прокрутка 1: великі фото, рухаються ВГОРУ разом зі сторінкою -->
+    <div class="about__media" aria-hidden="true">
+      <div class="about__track about__track--media" data-track="media">
+        <figure class="about__big"><img src="img/about-1.jpg" alt=""></figure>
+        <figure class="about__big"><img src="img/about-2.jpg" alt="" loading="lazy"></figure>
+        <figure class="about__big"><img src="img/about-3.jpg" alt="" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <!-- Прокрутка 2: текст, рухається ВНИЗ (порядок зворотний: 3,2,1) -->
+    <div class="about__panel">
+      <div class="about__bar">
+        <span class="about__label">Про нас</span>
+        <span class="about__count"><b data-count>01</b> / 03</span>
+      </div>
+
+      <div class="about__viewport">
+        <div class="about__track about__track--text" data-track="text">
+
+          <article class="chapter">
+            <img class="chapter__mobile" src="img/about-3.jpg" alt="Двір з дитячими майданчиками" loading="lazy">
+            <div class="chapter__body">
+              <span class="chapter__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21v-8"/><path d="M8 16l-2.5-2.5"/><path d="M8 15l2.5-2.5"/><path d="M5.2 12.4A4.5 4.5 0 0 1 4.5 5a4.5 4.5 0 0 1 7.5-.5 4 4 0 0 1-1.2 7.9"/><path d="M14 11v5h7"/><path d="M15 16v5"/><path d="M20 16v5"/><path d="M2.5 21h19"/></svg></span>
+              <h2 class="chapter__title">Двір, де ростуть традиції</h2>
+              <p class="chapter__text">Тихі дворики, лавочки під ліхтарями, сусідські розмови на балконі. Архітектура комплексу відтворює головне — атмосферу затишку та добросусідства.</p>
+            </div>
+          </article>
+
+          <article class="chapter">
+            <img class="chapter__mobile" src="img/about-2.jpg" alt="Фасад комплексу серед зелені" loading="lazy">
+            <div class="chapter__body">
+              <span class="chapter__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5"/><path d="M3 9h18"/><path d="M6 11v7"/><path d="M10 11v7"/><path d="M14 11v7"/><path d="M18 11v7"/><path d="M4 20h16"/></svg></span>
+              <h2 class="chapter__title">Історичний центр Одеси</h2>
+              <p class="chapter__text">Старосінна площа, вокзал і легендарний Привоз — у пішій доступності. А до моря чи Приморського бульвару — лише кілька хвилин.</p>
+            </div>
+          </article>
+
+          <article class="chapter">
+            <img class="chapter__mobile" src="img/about-1.jpg" alt="ЖК «Одеські Традиції» — фасад і двір">
+            <div class="chapter__body">
+              <span class="chapter__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1.5v2.5"/><path d="M6.5 7.5 12 4l5.5 3.5z"/><path d="M8 7.5h8l-1.25 8.5h-5.5z"/><path d="M12 7.5V16"/><path d="M9.5 16h5v2h-5z"/><path d="M12 18v4"/><path d="M8.5 22h7"/></svg></span>
+              <h2 class="chapter__title">Улюблений одеситами бренд</h2>
+              <p class="chapter__text">«Одеські традиції» на Старосінній — логічне продовження знайомого багатьом проєкту. Ми зберегли дух старої Одеси й поєднали його з сучасними функціональними рішеннями.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="about__foot">
+        <span class="about__scroll">
+          <span class="about__scroll-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Гортайте
+        </span>
+        <a class="cta about__cta" href="https://starosinna.odesskie-tradicii.com/">
+          <span>Детальніше про проєкт</span>
+          <span class="cta__icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>
