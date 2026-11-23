@@ -548,3 +548,150 @@ img { display: block; max-width: 100%; }
   .preloader__lantern path[pathLength] { stroke-dashoffset: 0; }
   .preloader__brand span, .preloader__place { opacity: 1; transform: none; }
 }
+
+/* =========================================================
+   Ремонт «під ключ» — композиція з референсу:
+   заголовок угорі по центру → вступ від центральної осі →
+   три картки: одна зліва, дві справа (друга стартує від центру)
+   Сітка 12 колонок, ті самі шрифти / кольори / крок 8 px
+   ========================================================= */
+.remont {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  padding: 32px 48px 128px;
+  background: var(--light);
+  color: var(--black);
+  border-top: 1px solid rgba(89, 88, 89, .16);
+}
+.remont__bar {
+  grid-column: 1 / -1;
+  font-size: 12px; line-height: 16px; letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* короткий заголовок угорі по центру, як у референсі */
+.remont__title {
+  grid-column: 1 / -1;
+  margin: 96px 0 0;
+  font-family: var(--font-head); font-weight: 400;
+  font-size: 56px; line-height: 56px; letter-spacing: -2px;
+  text-align: center;
+}
+
+/* вступ стоїть від центральної осі — над другою карткою */
+.remont__intro { grid-column: 7 / 10; margin-top: 64px; }
+.remont__lead {
+  margin: 0;
+  font-size: 20px; line-height: 28px;
+}
+
+/* картки */
+.remont__cards {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  margin-top: 96px;
+}
+.card--1 { grid-column: 1 / 4; }
+.card--2 { grid-column: 7 / 10; }
+.card--3 { grid-column: 10 / 13; }
+
+.card__num {
+  display: block; margin-bottom: 16px;
+  font-size: 12px; line-height: 16px; letter-spacing: 2px; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.card__num::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px;
+  border-radius: 50%; background: var(--copper); vertical-align: 1px;
+}
+.card__media {
+  margin: 0; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 4px;
+  background: var(--taupe);
+}
+.card__media img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: var(--grade);
+}
+.card__title {
+  margin: 24px 0 16px;
+  font-family: var(--font-head); font-weight: 400;
+  font-size: 24px; line-height: 28px; letter-spacing: -0.5px;
+}
+.card__text { margin: 0; font-size: 16px; line-height: 24px; color: var(--graphite); }
+
+.remont__foot { grid-column: 1 / -1; display: flex; justify-content: center; margin-top: 96px; }
+
+/* ---------- Поява секції ----------
+   1) слова заголовка виринають з-під маски по черзі;
+   2) у кожній картці: мідна крапка «спалахує» → фото відкривається шторкою знизу з наїздом →
+      рядки заголовка виїжджають з-під маски → опис проявляється;
+   3) картки йдуть хвилею зліва направо (затримка --d) */
+.remont__title .w,
+.card__title .ln { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 8px; margin-bottom: -8px; }
+.card__title .ln { display: block; }
+.remont__title .w > span,
+.card__title .ln > span {
+  display: inline-block;
+  transform: translateY(110%) rotate(4deg); transform-origin: 0 100%;
+  transition: transform 1100ms cubic-bezier(.22, 1, .36, 1);
+}
+.remont__title .w:nth-child(2) > span { transition-delay: 90ms; }
+.remont__title .w:nth-child(3) > span { transition-delay: 180ms; }
+.remont__title.is-in .w > span { transform: none; }
+
+.remont__intro, .remont__foot { opacity: 0; transform: translateY(24px); transition: opacity 960ms var(--ease) 240ms, transform 960ms var(--ease) 240ms; }
+.remont__intro.is-in, .remont__foot.is-in { opacity: 1; transform: none; }
+
+.card { --d: 0ms; }
+.card__num { opacity: 0; transform: translateX(-12px); transition: opacity 600ms var(--ease) var(--d), transform 600ms var(--ease) var(--d); }
+.card__num::before { transform: scale(0); transition: transform 600ms cubic-bezier(.34, 1.56, .64, 1) calc(var(--d) + 120ms); }
+.card .card__media {
+  clip-path: inset(100% 0 0 0 round 4px);
+  transition: clip-path 1300ms cubic-bezier(.76, 0, .24, 1) calc(var(--d) + 160ms);
+}
+.card .card__media img {
+  transform: scale(1.3) translateY(8%);
+  transition: transform 1900ms cubic-bezier(.22, 1, .36, 1) calc(var(--d) + 160ms);
+}
+.card__title .ln > span { transition-delay: calc(var(--d) + 900ms); }
+.card__title .ln + .ln > span { transition-delay: calc(var(--d) + 1000ms); }
+.card__text { opacity: 0; transform: translateY(12px); transition: opacity 800ms var(--ease) calc(var(--d) + 1150ms), transform 800ms var(--ease) calc(var(--d) + 1150ms); }
+
+.card.is-in .card__num { opacity: 1; transform: none; }
+.card.is-in .card__num::before { transform: scale(1); }
+.card.is-in .card__media { clip-path: inset(0 0 0 0 round 4px); }
+.card.is-in .card__media img { transform: none; }
+.card.is-in .card__title .ln > span { transform: none; }
+.card.is-in .card__text { opacity: 1; transform: none; }
+
+/* легкий наїзд фото при наведенні */
+.card .card__media img { will-change: transform; }
+@media (hover: hover) {
+  .card.is-in:hover .card__media img { transform: scale(1.04); transition-duration: 1200ms; transition-delay: 0ms; }
+}
+
+@media (max-width: 1100px) {
+  .remont__intro { grid-column: 7 / 12; }
+  .card--1 { grid-column: 1 / 5; }
+  .card--2 { grid-column: 5 / 9; }
+  .card--3 { grid-column: 9 / 13; }
+}
+@media (max-width: 900px) {
+  .remont { display: block; padding: 48px 16px 64px; }
+  .remont__title { margin-top: 48px; font-size: 40px; line-height: 40px; letter-spacing: -1px; }
+  .remont__intro { margin-top: 32px; }
+  .remont__lead { font-size: 18px; }
+  .remont__cards { display: grid; grid-template-columns: 1fr; row-gap: 64px; margin-top: 48px; }
+  .card--1, .card--2, .card--3 { grid-column: auto; }
+  .card__media { aspect-ratio: 4 / 3; }
+  .remont__foot { margin-top: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .remont__intro, .remont__foot, .card__num, .card__text,
+  .remont__title .w > span, .card__title .ln > span,
+  .card .card__media, .card .card__media img { opacity: 1; transform: none; clip-path: none; }
+  .card__num::before { transform: none; }
+}

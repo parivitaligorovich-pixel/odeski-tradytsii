@@ -159,3 +159,16 @@
   window.addEventListener('resize', refit);
   mq.addEventListener('change', fit);
 })();
+
+// ===== Ремонт: поява елементів при скролі =====
+(() => {
+  const els = document.querySelectorAll('[data-remont] [data-in]');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('is-in')); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+  els.forEach((e) => io.observe(e));
+})();
